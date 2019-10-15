@@ -31,6 +31,14 @@ class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
         db.insert("DRINK", null, drinkValues);
     }
 
+    private static void insertFood(SQLiteDatabase db, String name, String description, int resourceId) {
+        ContentValues foodValues = new ContentValues();
+        foodValues.put("NAME", name);
+        foodValues.put("DESCRIPTION", description);
+        foodValues.put("RESOURCE_ID", resourceId);
+        db.insert("FOOD", null, foodValues);
+    }
+
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 1) {
             db.execSQL("CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
