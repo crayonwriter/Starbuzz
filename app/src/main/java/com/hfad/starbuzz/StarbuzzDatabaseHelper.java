@@ -45,9 +45,17 @@ class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
                     + "NAME TEXT, "
                     + "DESCRIPTION TEXT, "
                     + "IMAGE_RESOURCE_ID INTEGER);");
+
+            db.execSQL("CREATE TABLE FOOD (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + "NAME TEXT,"
+                    + "DESCRIPTION TEXT,"
+                    + "IMAGE_RESOURCE_ID INTEGER);");
+
             insertDrink(db, "Latte", "Espresso and steamed milk", R.drawable.latte);
             insertDrink(db, "Capuccino", "Espresso, hot milk and steamed-milk foam", R.drawable.cappuccino);
             insertDrink(db, "Filter", "Our best drip coffee", R.drawable.filter);
+
+            insertFood(db, "Croissant", "Buttery and flaky pastry", R.drawable.latte);
         }
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
